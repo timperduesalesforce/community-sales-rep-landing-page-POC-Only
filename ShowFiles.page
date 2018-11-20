@@ -1,0 +1,29 @@
+<apex:page controller="ViewMyFiles" sidebar="false" showHeader="false" standardStylesheets="false" applyBodyTag="true" applyHtmlTag="False"> 
+    <style type = "text/css">
+        .myHeader {text-align: left;}
+    </style>
+  
+  <apex:form >
+ 
+   <apex:pageBlock title="Resources">
+   
+    <apex:dataTable value="{!viewFiles}" var="f" border="0" columnsWidth="20%,40%,10%" cellpadding="5">
+         
+    <apex:column headerValue="File Name" headerClass="myHeader">
+          <apex:outputText >{!f.Name}</apex:outputText>
+    </apex:column>
+    
+    <apex:column headerValue="Summary" headerClass="myHeader">
+          <apex:outputText >{!f.Summary__c}</apex:outputText>
+    </apex:column>
+    
+    <apex:column headerValue="Thumbnail" headerClass="myHeader">
+          <apex:outputLink value="{!f.Public_Link__c}">
+              <apex:image value="{!f.Thumbnail_Static_Image__c}"/><br/><br/>
+          </apex:outputLink>
+    </apex:column>
+    
+    </apex:dataTable>   
+   </apex:pageBlock>
+ </apex:form>
+ </apex:page>
